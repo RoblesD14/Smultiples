@@ -14,9 +14,27 @@ class CreateGastosTable extends Migration
     public function up()
     {
         Schema::create('gastos', function (Blueprint $table) {
-            $table->id();;
-            $table->timestamps();
+
+
+            $table->id();
+            $table->unsignedInteger("gasto1");
+            $table->unsignedInteger("gasto2");
+            $table->unsignedInteger("gasto3");
+            $table->unsignedInteger("gasto4");
+            $table->unsignedInteger("gasto5");
+            $table->unsignedInteger("gasto6");
+            $table->unsignedInteger("gasto7");
+            $table->unsignedInteger("gasto8");
+
         });
+
+        Schema::table('gastos', function (Blueprint $table) {
+            $table->unsignedBigInteger("id_empleado");
+            $table->foreign("id_empleado")->references("id")->on("empleados")->cascadeOnDelete();
+
+        });
+
+
     }
 
     /**
